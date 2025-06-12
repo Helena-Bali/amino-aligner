@@ -9,7 +9,7 @@ interface Props {
 const AlignmentView: React.FC<Props> = ({ seq1, seq2 }) => {
   if (!seq1 || !seq2) return null;
 
-  // Для адаптивности разбиваем на строки по 40 символов (можно будет сделать динамически)
+
   const chunkSize = 40;
   const splitChunks = (seq: string) => seq.match(new RegExp(`.{1,${chunkSize}}`, 'g')) || [];
   const seq1Chunks = splitChunks(seq1);
@@ -19,7 +19,7 @@ const AlignmentView: React.FC<Props> = ({ seq1, seq2 }) => {
     <div style={{ marginTop: 32 }}>
       {seq1Chunks.map((chunk, idx) => (
         <div key={idx} style={{ marginBottom: 2 }}>
-          {/* Верхняя строка: все буквы с цветом */}
+          
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {chunk.split('').map((char, i) => (
               <span
@@ -41,7 +41,7 @@ const AlignmentView: React.FC<Props> = ({ seq1, seq2 }) => {
               </span>
             ))}
           </div>
-          {/* Нижняя строка: только отличающиеся буквы с цветом */}
+          
           <div style={{ display: 'flex', flexWrap: 'wrap' }}>
             {seq2Chunks[idx]?.split('').map((char, i) => (
               <span
