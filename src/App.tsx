@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import AminoInputForm from './components/AminoInputForm';
+import AlignmentView from './components/AlignmentView';
 
 const App: React.FC = () => {
   const [seq1, setSeq1] = useState<string | null>(null);
@@ -10,10 +11,7 @@ const App: React.FC = () => {
       <h1>Amino Aligner</h1>
       <AminoInputForm onSubmit={(s1, s2) => { setSeq1(s1); setSeq2(s2); }} />
       {seq1 && seq2 && (
-        <div style={{ marginTop: 32 }}>
-          <h2>Введённые последовательности:</h2>
-          <pre style={{ fontFamily: 'monospace', fontSize: 18 }}>{seq1}\n{seq2}</pre>
-        </div>
+        <AlignmentView seq1={seq1} seq2={seq2} />
       )}
     </div>
   );
