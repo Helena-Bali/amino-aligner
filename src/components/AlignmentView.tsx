@@ -46,47 +46,53 @@ const AlignmentView: React.FC<Props> = ({ seq1, seq2 }) => {
     <div className="alignment-container">
       {seq1Chunks.map((chunk, idx) => (
         <div key={idx} className="alignment-chunk">
-          <div 
-            className="alignment-row"
-            onMouseUp={(e) => {
+          <div
+            className="alignment-row-layered"
+            onMouseUp={() => {
               const selection = window.getSelection();
               if (selection && selection.toString()) {
                 handleCopy(selection.toString());
               }
             }}
           >
-            <div className="alignment-text">
+            {/* Визуальный слой */}
+            <div className="alignment-visual-layer">
               {chunk.split('').map((char, i) => (
                 <span
                   key={i}
                   className="alignment-char"
-                  style={{ '--amino-color': aminoAcidColors[char] || 'transparent' } as React.CSSProperties}
+                  style={{ background: aminoAcidColors[char] || 'transparent' }}
                 >
                   {char}
                 </span>
               ))}
             </div>
+            {/* Слой для поиска */}
+            <span className="alignment-search-layer">{chunk}</span>
           </div>
-          <div 
-            className="alignment-row"
-            onMouseUp={(e) => {
+          <div
+            className="alignment-row-layered"
+            onMouseUp={() => {
               const selection = window.getSelection();
               if (selection && selection.toString()) {
                 handleCopy(selection.toString());
               }
             }}
           >
-            <div className="alignment-text">
+            {/* Визуальный слой */}
+            <div className="alignment-visual-layer">
               {seq2Chunks[idx]?.split('').map((char, i) => (
                 <span
                   key={i}
                   className="alignment-char"
-                  style={{ '--amino-color': char !== chunk[i] ? (aminoAcidColors[char] || 'transparent') : 'transparent' } as React.CSSProperties}
+                  style={{ background: char !== chunk[i] ? (aminoAcidColors[char] || 'transparent') : 'transparent' }}
                 >
                   {char}
                 </span>
               ))}
             </div>
+            {/* Слой для поиска */}
+            <span className="alignment-search-layer">{seq2Chunks[idx]}</span>
           </div>
         </div>
       ))}
@@ -100,4 +106,4 @@ const AlignmentView: React.FC<Props> = ({ seq1, seq2 }) => {
   );
 };
 
-export default AlignmentView; 
+export default AlignmentView;
