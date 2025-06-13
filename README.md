@@ -45,13 +45,13 @@ GGG
 ## Деплой
 
 Проект задеплоен на GitHub Pages:  
-[**Ссылка на демо**](https://ВАШ-USERNAME.github.io/ВАШ-РЕПОЗИТОРИЙ/)
+[**Ссылка на демо**](https://Helena-Bali.github.io/amino-aligner/)
 
 ## Запуск локально
 
 ```bash
-git clone https://github.com/ВАШ-USERNAME/ВАШ-РЕПОЗИТОРИЙ.git
-cd ВАШ-РЕПОЗИТОРИЙ
+git clone https://github.com/Helena-Bali/amino-aligner.git
+cd amino-aligner
 npm install
 npm start
 ```
