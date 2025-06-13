@@ -36,15 +36,23 @@ const AminoInputForm: React.FC<Props> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ maxWidth: 400, margin: '0 auto' }}>
+    <form onSubmit={handleSubmit} style={{ maxWidth: 'min(400px, 90vw)', margin: '0 auto', padding: '0 16px' }}>
       <div style={{ marginBottom: 12 }}>
-        <label>
+        <label style={{ display: 'block', marginBottom: 4 }}>
           Последовательность 1:
           <input
             type="text"
             value={seq1}
             onChange={e => setSeq1(e.target.value)}
-            style={{ width: '100%', fontFamily: 'monospace', fontSize: 16, marginTop: 4 }}
+            style={{
+              width: '100%',
+              fontFamily: 'monospace',
+              fontSize: 'clamp(14px, 2vw, 16px)',
+              padding: '8px',
+              marginTop: 4,
+              borderRadius: 4,
+              border: '1px solid #ccc',
+            }}
             autoComplete="off"
             spellCheck={false}
             required
@@ -52,21 +60,47 @@ const AminoInputForm: React.FC<Props> = ({ onSubmit }) => {
         </label>
       </div>
       <div style={{ marginBottom: 12 }}>
-        <label>
+        <label style={{ display: 'block', marginBottom: 4 }}>
           Последовательность 2:
           <input
             type="text"
             value={seq2}
             onChange={e => setSeq2(e.target.value)}
-            style={{ width: '100%', fontFamily: 'monospace', fontSize: 16, marginTop: 4 }}
+            style={{
+              width: '100%',
+              fontFamily: 'monospace',
+              fontSize: 'clamp(14px, 2vw, 16px)',
+              padding: '8px',
+              marginTop: 4,
+              borderRadius: 4,
+              border: '1px solid #ccc',
+            }}
             autoComplete="off"
             spellCheck={false}
             required
           />
         </label>
       </div>
-      {error && <div style={{ color: 'red', marginBottom: 12 }}>{error}</div>}
-      <button type="submit" style={{ padding: '8px 16px', fontSize: 16 }}>Визуализировать</button>
+      {error && (
+        <div style={{ color: 'red', marginBottom: 12, fontSize: 'clamp(12px, 1.5vw, 14px)' }}>
+          {error}
+        </div>
+      )}
+      <button
+        type="submit"
+        style={{
+          padding: '8px 16px',
+          fontSize: 'clamp(14px, 2vw, 16px)',
+          backgroundColor: '#4CAF50',
+          color: 'white',
+          border: 'none',
+          borderRadius: 4,
+          cursor: 'pointer',
+          width: '100%',
+        }}
+      >
+        Визуализировать
+      </button>
     </form>
   );
 };
