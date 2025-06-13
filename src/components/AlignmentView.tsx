@@ -55,15 +55,17 @@ const AlignmentView: React.FC<Props> = ({ seq1, seq2 }) => {
               }
             }}
           >
-            {chunk.split('').map((char, i) => (
-              <span
-                key={i}
-                className="alignment-char"
-                style={{ '--amino-color': aminoAcidColors[char] || 'transparent' } as React.CSSProperties}
-              >
-                {char}
-              </span>
-            ))}
+            <div className="alignment-text">
+              {chunk.split('').map((char, i) => (
+                <span
+                  key={i}
+                  className="alignment-char"
+                  style={{ '--amino-color': aminoAcidColors[char] || 'transparent' } as React.CSSProperties}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
           </div>
           <div 
             className="alignment-row"
@@ -74,15 +76,17 @@ const AlignmentView: React.FC<Props> = ({ seq1, seq2 }) => {
               }
             }}
           >
-            {seq2Chunks[idx]?.split('').map((char, i) => (
-              <span
-                key={i}
-                className="alignment-char"
-                style={{ '--amino-color': char !== chunk[i] ? (aminoAcidColors[char] || 'transparent') : 'transparent' } as React.CSSProperties}
-              >
-                {char}
-              </span>
-            ))}
+            <div className="alignment-text">
+              {seq2Chunks[idx]?.split('').map((char, i) => (
+                <span
+                  key={i}
+                  className="alignment-char"
+                  style={{ '--amino-color': char !== chunk[i] ? (aminoAcidColors[char] || 'transparent') : 'transparent' } as React.CSSProperties}
+                >
+                  {char}
+                </span>
+              ))}
+            </div>
           </div>
         </div>
       ))}

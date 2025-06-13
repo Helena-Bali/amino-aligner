@@ -20,8 +20,13 @@
   cursor: text;
 }
 
-.alignment-row:not(:first-child) {
-  margin-top: 4px;
+.alignment-text {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  font-family: monospace;
+  font-size: clamp(14px, 2vw, 18px);
+  line-height: 1.5;
 }
 
 .alignment-char {
@@ -29,8 +34,6 @@
   color: #222;
   padding: 4px 8px;
   border-radius: 6px;
-  font-family: monospace;
-  font-size: clamp(14px, 2vw, 18px);
   min-width: clamp(14px, 2vw, 18px);
   text-align: center;
   transition: transform 0.2s, box-shadow 0.2s;
@@ -48,4 +51,10 @@
 
 .alignment-char::selection {
   background: rgba(255, 235, 59, 0.5);
+}
+
+.alignment-text mark {
+  background-color: rgba(255, 235, 59, 0.5);
+  padding: 0;
+  border-radius: 4px;
 } 
